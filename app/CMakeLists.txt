@@ -13,6 +13,21 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-add_executable(proj src/main.cpp)
+enable_testing()
 
-set_target_properties(proj PROPERTIES RUNTIME_OUTPUT_DIRECTORY &{})
+add_executable(
+  proj_exe
+  src/main.cpp
+)
+
+add_executable(
+  test_stdcpp
+  tests/test_stdcpp.cpp
+)
+target_link_libraries(
+  test_stdcpp
+  GTest::gtest_main
+)
+
+include(GoogleTest)
+gtest_discover_tests(test_stdcpp)
