@@ -12,5 +12,5 @@ RUN apt-get install -y clang && apt-get install -y clang-tidy
 WORKDIR /app
 COPY app .
 RUN chmod +x build.sh
-CMD [ "./build.sh", "Debug" ]
+CMD [ "./build.sh", "Release" ]
 
